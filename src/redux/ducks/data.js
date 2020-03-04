@@ -43,7 +43,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        data: action.result.data,
+        data: null,
       };
     case UPDATE_DATA_ERROR:
       return {

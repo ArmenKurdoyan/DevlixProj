@@ -18,10 +18,10 @@ const MainPage = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (userId && groupId) {
+    if (userId && groupId && !data) {
       dispatch(getData(userId, groupId));
     }
-  }, [userId, groupId, dispatch])
+  }, [userId, groupId, data, dispatch])
 
   const handleUpdatePros = (newData) => {
     const payload = {
