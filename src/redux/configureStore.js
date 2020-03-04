@@ -1,8 +1,31 @@
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createLogger } from 'redux-logger';
+import thunk from 'redux-thunk';
+import clientMiddleware from './middlewares/clientMiddleware';
+// reducers
+import user from './ducks/user';
+import data from './ducks/data';
 
-import { createStore, combineReducers } from 'redux';
+const loggerMiddleware = createLogger(); // initialize logger
 
-const reducer = combineReducers({})
+const middleware = [
+  clientMiddleware(),
+  thunk,
+  loggerMiddleware,
+];
 
-const configureStore = (initialState) => createStore(reducer, initialState);
+const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore);
+const reducer = combineReducers({
+  user,
+  data,
+});
 
-export default configureStore
+const rootReducer = (state, action) => {
+  let newState = state;
+
+  return reducer(newState, action);
+};
+
+const configureStore = (initialState) => createStoreWithMiddleware(rootReducer, initialState);
+
+export default configureStore;

@@ -1,0 +1,44 @@
+#list_block {
+  margin: 0;
+  width: 49%;
+
+  .title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+  }
+
+  .items_section {
+    min-height: 50vh;
+    max-height: 50vh;
+    overflow-y: auto;
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .add_item_section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    .input {
+      width: 75%;
+      height: 40px;
+    }
+
+    i {
+      cursor: pointer;
+      height: 40px;
+      width: 40px;
+      border: 1px solid black;
+      border-radius: 50%;
+      font-size: 20px;
+      padding-top: 8px;
+      margin: 0;
+    }
+  }
+}
